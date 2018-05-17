@@ -12,16 +12,16 @@
 typedef struct node {
     bool is_word;
     struct node *children[CHILDREN_COUNT];
-} node;
+} node_t;
 
-void trie_add(node* root, char* word);
+void trie_add(node_t* root, char* word);
 
-void trie_remove(node *root, char *word);
+void trie_remove(node_t *root, char *word);
 
-bool trie_contains(node* root, char* word);
+bool trie_contains(node_t* root, char* word);
 
-void trie_destroy(node* root);
+void trie_destroy(node_t* root);
 
-node *trie_create(void);
+node_t *trie_create(void);
 
 #endif
