@@ -2,20 +2,20 @@
 CC = gcc
 
 # flags to pass compiler
-CFLAGS = -ggdb3 -O3 -std=c11 -Wall -Werror
+CFLAGS = -ggdb3 -std=c11 -Wall -Werror
 
 # name for executable
-EXE = trie_test
+EXE = test
 
 # space-separated list of header files
-HDRS = trie.h
+HDRS = trie.h stack.h re.h
 
 # space-separated list of libraries, if any,
 # each of which should be prefixed with -l
 LIBS =
 
 # space-separated list of source files
-SRCS = trie_test.c trie.c
+SRCS = trie.c test.c stack.c re.c
 
 # automatically generated list of object files
 OBJS = $(SRCS:.c=.o)
