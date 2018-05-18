@@ -122,12 +122,35 @@ void re_test_creating_and_matchin_pattern_with_or(void) {
     assert(re_matches(pattern, "b"));
     assert(re_matches(pattern, "a"));
     re_destroy(pattern);
+
+    pattern = re_compile("aaabbb|cdada");
+    assert(re_matches(pattern, "aaabbbdada"));
+    assert(re_matches(pattern, "aaabbcdada"));
+    re_destroy(pattern);
+}
+
+void re_test_creating_and_matching_pattern_with_star(void) {
+    printf("Testing pattern containing a star ...\n");
+    state_t *pattern = re_compile("a*");
+    assert(re_matches(pattern, "aaaaaaaaaaaaaa"));
+    assert(re_matches(pattern, "a"));
+    assert(re_matches(pattern, ""));
+    re_destroy(pattern);
+
+    pattern = re_compile("0101a*b");
+    assert(re_matches(pattern, "0101aaaaaaaaaaaaaab"));
+    assert(re_matches(pattern, "0101b"));
+    assert(re_matches(pattern, "0101ab"));
+    assert(!re_matches(pattern, "0101abb"));
+    assert(!re_matches(pattern, "01011ab"));
+    re_destroy(pattern);
 }
 
 void re_test_all(void) {
     re_test_creating_simple_pattern();
     re_test_matching_simple_pattern();
     re_test_creating_and_matchin_pattern_with_or();
+    re_test_creating_and_matching_pattern_with_star();
 }
 
 int main(void) {

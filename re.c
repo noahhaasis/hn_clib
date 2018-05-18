@@ -1,3 +1,8 @@
+/*
+ * TODO(Noah): 
+ * - Implement ranges e.g [0-9]
+ * - Implement blocks e.g (ab)*
+ */
 #include "re.h"
 
 state_t *state_create(void) {
@@ -37,7 +42,8 @@ state_t *re_compile(char *pattern) {
             is_or = true;
             break;
         default:
-            if (!is_or) { next_state = state_create(); }
+            if (pattern[i+1] == '*') { next_state = current_state; }
+            else if (!is_or) { next_state = state_create(); }
             current_state->transitions[get_transition_index(c)] = next_state;
             if (pattern[i+1] != '|') { current_state = next_state; }
             refering_to_block = false;
