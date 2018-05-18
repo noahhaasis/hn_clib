@@ -38,6 +38,9 @@ state_t *re_compile(char *pattern) {
             break;
         case '*':
             break;
+        case '+':
+            current_state->transitions[get_transition_index(pattern[i-1])] = current_state;
+            break;
         case '|':
             is_or = true;
             break;

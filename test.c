@@ -146,11 +146,21 @@ void re_test_creating_and_matching_pattern_with_star(void) {
     re_destroy(pattern);
 }
 
+void re_test_creating_and_matching_pattern_with_plus(void) {
+    printf("Testing pattern containing a plus ...\n");
+    state_t *pattern = re_compile("a+b*");
+    assert(re_matches(pattern, "aaaa"));
+    assert(re_matches(pattern, "abbb"));
+    assert(!re_matches(pattern, "bbb"));
+    re_destroy(pattern);
+}
+
 void re_test_all(void) {
     re_test_creating_simple_pattern();
     re_test_matching_simple_pattern();
     re_test_creating_and_matchin_pattern_with_or();
     re_test_creating_and_matching_pattern_with_star();
+    re_test_creating_and_matching_pattern_with_plus();
 }
 
 int main(void) {
