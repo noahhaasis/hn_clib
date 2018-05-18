@@ -38,8 +38,15 @@ state_t *re_compile(char *pattern) {
             break;
         case '*':
             break;
-        case '+':
-            current_state->transitions[get_transition_index(pattern[i-1])] = current_state;
+        case '+': ;
+            char prev_char = pattern[i-1];
+            if (prev_char == '.') {
+                for (int i = 0; i < TRANSITION_COUNT; i++) {
+                    current_state->transitions[i] = current_state;
+                }
+            } else {
+                current_state->transitions[get_transition_index(pattern[i-1])] = current_state;
+            }   
             break;
         case '|':
             is_or = true;
@@ -47,7 +54,13 @@ state_t *re_compile(char *pattern) {
         default:
             if (pattern[i+1] == '*') { next_state = current_state; }
             else if (!is_or) { next_state = state_create(); }
-            current_state->transitions[get_transition_index(c)] = next_state;
+            if (c == '.') {
+                for (int i = 0; i < TRANSITION_COUNT; i++) {
+                    current_state->transitions[i] = next_state;
+                }
+            } else {
+                current_state->transitions[get_transition_index(c)] = next_state;
+            }
             if (pattern[i+1] != '|') { current_state = next_state; }
             refering_to_block = false;
             break;
