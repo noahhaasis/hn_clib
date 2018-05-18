@@ -108,8 +108,26 @@ void re_test_creating_simple_pattern(void) {
     re_destroy(pattern);
 }
 
+void re_test_matching_simple_pattern(void) {
+    printf("Testing simple pattern matching ...\n");
+    state_t *pattern = re_compile("aaa");
+    assert(re_matches(pattern, "aaa"));
+    re_destroy(pattern);
+}
+
+void re_test_creating_and_matchin_pattern_with_or(void) {
+    printf("Testing pattern containing a or ...\n");
+    state_t *pattern = re_compile("a|b");
+    assert(pattern);
+    assert(re_matches(pattern, "b"));
+    assert(re_matches(pattern, "a"));
+    re_destroy(pattern);
+}
+
 void re_test_all(void) {
     re_test_creating_simple_pattern();
+    re_test_matching_simple_pattern();
+    re_test_creating_and_matchin_pattern_with_or();
 }
 
 int main(void) {

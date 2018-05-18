@@ -39,7 +39,7 @@ state_t *re_compile(char *pattern) {
         default:
             if (!is_or) { next_state = state_create(); }
             current_state->transitions[get_transition_index(c)] = next_state;
-            if (!is_or) { current_state = next_state; }
+            if (pattern[i+1] != '|') { current_state = next_state; }
             refering_to_block = false;
             break;
         }
@@ -59,10 +59,17 @@ bool re_matches(state_t *pattern, char *word) {
 }
 
 void re_destroy(state_t *pattern) {
+    // Regular expressions containing an 'or' have multiple transitions to the same state 
+    // so we have to keep track of them
+    state_t *freed_transitions[TRANSITION_COUNT] = {0};
     for (int i = 0; i < TRANSITION_COUNT; i++) {
         state_t *curr_transition = pattern->transitions[i];
-        if (curr_transition && curr_transition != pattern) {
+        if (
+            curr_transition && 
+            curr_transition != pattern && 
+            !array_contains((void **)freed_transitions, i, curr_transition)) {
             re_destroy(curr_transition);
+            freed_transitions[i] = curr_transition;
         }
     }
     free(pattern);

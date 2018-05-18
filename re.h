@@ -6,6 +6,7 @@
 #include <stdlib.h>
 
 #include "stack.h"
+#include "array.h"
 
 #define TRANSITION_COUNT 62 // [A-Za-Z0-9]
 
