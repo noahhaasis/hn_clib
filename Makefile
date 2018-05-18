@@ -2,7 +2,7 @@
 CC = gcc
 
 # flags to pass compiler
-CFLAGS = -ggdb3 -std=c11 -Wall -Werror
+CFLAGS = -ggdb3 -std=c11 -Wall
 
 # name for executable
 EXE = test

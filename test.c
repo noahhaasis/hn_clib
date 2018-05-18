@@ -4,6 +4,7 @@
 
 #include "trie.h"
 #include "stack.h"
+#include "re.h"
 
 
  void test_trie_creation(void) {
@@ -99,11 +100,25 @@ void stack_test_all(void) {
     stack_test_complete();
 }
 
+
+void re_test_creating_simple_pattern(void) {
+    printf("Testing simple pattern creation ...\n");
+    state_t *pattern = re_compile("aaa");
+    assert(pattern);
+    re_destroy(pattern);
+}
+
+void re_test_all(void) {
+    re_test_creating_simple_pattern();
+}
+
 int main(void) {
     trie_test_all();
     printf("Tested the trie module successully!\n");
     stack_test_all();
     printf("Tested the stack module successully!\n");
+    re_test_all();
+    printf("Tested the regular expression module successfully!\n");
     printf("All tests ran successfully!\n");
     return 0;
 }
