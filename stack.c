@@ -26,8 +26,7 @@ void *stack_pop(stack_t *stack) {
 }
 
 void *stack_peek(stack_t *stack) {
-    if (!stack) { return NULL; }
-    if (!stack->top) { return NULL; }
+    if (!stack || !stack->top) { return NULL; }
     return stack->top->value;
 }
 
