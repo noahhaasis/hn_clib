@@ -30,6 +30,6 @@ void stack_destroy(stack_t *stack);
  * Free all elements on the stack, the items refered to on the stack
  * and the stack itself.
  */
-void stack_destory_with_elements(stack_t *stack);
+void stack_destroy_with_elements(stack_t *stack);
 
 #endif 
