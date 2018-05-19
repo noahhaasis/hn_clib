@@ -18,6 +18,8 @@ void stack_push(stack_t *stack, void *val);
 
 void *stack_pop(stack_t *stack);
 
+void *stack_peek(stack_t *stack);
+
 /* 
  * Free all elements on the stack and the stack itself.
  * This doesn't free the references on the stack;

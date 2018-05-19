@@ -77,6 +77,17 @@ void stack_test_push(void) {
     stack_destroy(stack);
 }
 
+void stack_test_peek(void) {
+    printf("Testing stack_peek ...\n");
+    stack_t *stack = stack_create();
+    int val = 8;
+    stack_push(stack, &val);
+    for (int i = 0; i < 100; i++) {
+        assert(*(int *)stack_peek(stack) == val);
+    }
+    stack_destroy(stack);
+}
+
 void stack_test_complete(void) {
     printf("Testing all stack functions in combination ...\n");
     stack_t *stack = stack_create();
@@ -97,6 +108,7 @@ void stack_test_complete(void) {
 void stack_test_all(void) {
     stack_test_create();
     stack_test_push();
+    stack_test_peek();
     stack_test_complete();
 }
 
