@@ -16,7 +16,7 @@ typedef struct queue_t {
 queue_t *queue_create(void);
 
 /* Adds an element at the end of the queue */
-void enqueue(void *elem, queue_t *queue);
+void enqueue(void *val, queue_t *queue);
 
 /* Returns the element at the queues front (FIFO) */
 void *dequeue(queue_t *queue);

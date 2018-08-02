@@ -8,10 +8,11 @@ queue_t *queue_create(void) {
     return (queue_t *)calloc(sizeof(queue_t), 1);
 }
 
-void enqueue(void *elem, queue_t *queue) {
+void enqueue(void *val, queue_t *queue) {
     assert(queue);
     queue_elem_t *new_elem = (queue_elem_t *)malloc(sizeof(queue_elem_t));
     new_elem->next = queue->start;
+    new_elem->data = val;
     queue->start = new_elem;
     if (!queue->end) {
         queue->end = new_elem;
