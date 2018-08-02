@@ -196,7 +196,7 @@ void queue_test_queue_create(void) {
     free(queue);
 }
 
-void queue_test_enqueue(void) {
+void queue_test_enqueue_and_dequeue(void) {
     queue_t *queue = queue_create();
     int data_count = 3;
     int data[] = {1, 2, 3};
@@ -210,22 +210,32 @@ void queue_test_enqueue(void) {
     free(queue);
 }
 
-void queue_test_dequeue(void) {
-    assert(false);
-}
-
 void queue_test_len(void) {
-    assert(false);
+    queue_t *queue = queue_create();
+    enqueue("", queue);
+    enqueue("", queue);
+    enqueue("", queue);
+    assert(queue_len(queue) == 3);
+    dequeue(queue);
+    assert(queue_len(queue) == 2);
+    queue_remove_elements(queue);
+    free(queue);
 }
 
 void queue_test_remove_elements(void) {
-    assert(false);
+    queue_t *queue = queue_create();
+    enqueue("", queue);
+    enqueue("", queue);
+    enqueue("", queue);
+    queue_remove_elements(queue);
+    assert(!dequeue(queue));
+    assert(queue_len(queue) == 0);
+    free(queue);
 }
 
 void queue_test_all(void) {
     queue_test_queue_create();
-    queue_test_enqueue();
-    queue_test_dequeue();
+    queue_test_enqueue_and_dequeue();
     queue_test_len();
     queue_test_remove_elements();
 }
