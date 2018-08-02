@@ -8,7 +8,5 @@
 - insertion sort
 - quick sort
 - binary search tree's + balancing
-- stack
-- queue
 - string interning
 
