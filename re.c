@@ -31,10 +31,10 @@ state_t *re_compile(char *pattern) {
         switch (c) {
         case '(':
             stack_push(start_of_blocks, current_state);
+            start_of_last_block = current_state;
             break;
         case ')':
             refering_to_block = true;
-            start_of_last_block = (state_t *)stack_pop(start_of_blocks);
             break;
         case '*':
             break;

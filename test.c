@@ -5,6 +5,7 @@
 #include "trie.h"
 #include "stack.h"
 #include "re.h"
+#include "queue.h"
 
 
  void test_trie_creation(void) {

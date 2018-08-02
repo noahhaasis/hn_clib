@@ -4,7 +4,7 @@
 
 
 void queue_create(queue_t *queue) {
-    return (queue_t *)calloc(sizeof(queue_t), 1);
+    queue = (queue_t *)calloc(sizeof(queue_t), 1);
 }
 
 void enqueue(void *elem, queue_t *queue) {
@@ -14,10 +14,10 @@ void enqueue(void *elem, queue_t *queue) {
 }
 
 void *dequeue(queue_t *queue) {
-    queue_t *res = queue->start;
+    queue_elem_t *res = queue->start;
     if (!res) { return NULL; };
     queue->start = res->next;
-    return res;
+    return res->data;
 }
 
 void queue_destroy(queue_t *queue) {
