@@ -30,7 +30,9 @@ void *dequeue(queue_t *queue) {
     if (!res) { return NULL; };
     queue->start = res->next;
     queue->length -= 1;
-    return res->data;
+    void *val = res->data;
+    free(res);
+    return val;
 }
 
 void queue_remove_elements(queue_t *queue) {
