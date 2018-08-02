@@ -187,6 +187,11 @@ void re_test_all(void) {
     re_test_creating_and_matching_pattern_with_dot();
 }
 
+
+void queue_test_all(void) {
+
+}
+
 int main(void) {
     trie_test_all();
     printf("Tested the trie module successully!\n");
@@ -194,6 +199,8 @@ int main(void) {
     printf("Tested the stack module successully!\n");
     re_test_all();
     printf("Tested the regular expression module successfully!\n");
+    queue_test_all();
+    printf("Tested the queue module successfully\n");
     printf("All tests ran successfully!\n");
     return 0;
 }

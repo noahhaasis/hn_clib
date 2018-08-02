@@ -12,8 +12,8 @@ typedef struct queue_t {
     int length;
 } queue_t;
 
-/* Creates a empty queue at the passed location */
-void queue_create(queue_t *queue);
+/* Creates a empty queue */
+queue_t *queue_create();
 
 /* Adds an element at the end of the queue */
 void enqueue(void *elem, queue_t *queue);

@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 
-void queue_create(queue_t *queue) {
-    queue = (queue_t *)calloc(sizeof(queue_t), 1);
+queue_t *queue_create() {
+    return (queue_t *)calloc(sizeof(queue_t), 1);
 }
 
 void enqueue(void *elem, queue_t *queue) {
