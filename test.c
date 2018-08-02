@@ -8,7 +8,7 @@
 #include "queue.h"
 
 
- void test_trie_creation(void) {
+void test_trie_creation(void) {
     printf("Testing  trie_create ...\n");
     node_t *root = trie_create();
     assert(root);
@@ -17,7 +17,7 @@
     trie_destroy(root);
 }
 
- void test_adding_word(void) {
+void test_adding_word(void) {
     printf("Test adding word to trie...\n");
     node_t *root = trie_create();
     trie_add(root, "thisisacomplicatedandlongword");
@@ -26,7 +26,7 @@
     trie_destroy(root);
 }
 
- void test_case_insensitivity(void) {
+void test_case_insensitivity(void) {
     printf("Test trie case insensitivity ...\n");
     node_t *root = trie_create();
     trie_add(root, "notashortword");
@@ -34,7 +34,7 @@
     trie_destroy(root);
 }
 
- void test_removing_word(void) {
+void test_removing_word(void) {
     printf("Testing trie_remove_word...\n");
     node_t *root = trie_create();
     trie_add(root, "");
@@ -188,8 +188,32 @@ void re_test_all(void) {
 }
 
 
-void queue_test_all(void) {
+void queue_test_queue_create(void) {
 
+}
+
+void queue_test_enqueue(void) {
+
+}
+
+void queue_test_dequeue(void) {
+
+}
+
+void queue_test_len(void) {
+
+}
+
+void queue_test_remove_elements(void) {
+
+}
+
+void queue_test_all(void) {
+    queue_test_queue_create();
+    queue_test_enqueue();
+    queue_test_dequeue();
+    queue_test_len();
+    queue_test_remove_elements();
 }
 
 int main(void) {
