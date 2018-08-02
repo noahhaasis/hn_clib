@@ -4,7 +4,7 @@
 #include <assert.h>
 
 
-queue_t *queue_create() {
+queue_t *queue_create(void) {
     return (queue_t *)calloc(sizeof(queue_t), 1);
 }
 
@@ -25,7 +25,7 @@ void *dequeue(queue_t *queue) {
     return res->data;
 }
 
-void queue_destroy(queue_t *queue) {
+void queue_remove_elements(queue_t *queue) {
     queue_elem_t *next;
     queue_elem_t *elem = queue->start;
     while (elem) {

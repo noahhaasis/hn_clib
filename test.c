@@ -16,7 +16,6 @@ void test_trie_creation(void) {
     for (int i = 0; i < CHILDREN_COUNT; i++) { assert(!root->children[i]); }
     trie_destroy(root);
 }
-
 void test_adding_word(void) {
     printf("Test adding word to trie...\n");
     node_t *root = trie_create();
@@ -189,23 +188,38 @@ void re_test_all(void) {
 
 
 void queue_test_queue_create(void) {
-
+    queue_t *queue = queue_create();
+    assert(queue);
+    assert(queue_len(queue) == 0);
+    assert(!queue->start);
+    assert(!queue->end);
+    free(queue);
 }
 
 void queue_test_enqueue(void) {
-
+    queue_t *queue = queue_create();
+    int data_count = 3;
+    int data[] = {1, 2, 3};
+    for (int i = 0; i < data_count; i++) {
+        enqueue(&data[i], queue);
+    }
+    for (int i = 0; i < data_count; i++) {
+        assert(*(int *)dequeue(queue) == data[i]);
+    }
+    queue_remove_elements(queue);
+    free(queue);
 }
 
 void queue_test_dequeue(void) {
-
+    assert(false);
 }
 
 void queue_test_len(void) {
-
+    assert(false);
 }
 
 void queue_test_remove_elements(void) {
-
+    assert(false);
 }
 
 void queue_test_all(void) {

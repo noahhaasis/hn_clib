@@ -13,7 +13,7 @@ typedef struct queue_t {
 } queue_t;
 
 /* Creates a empty queue */
-queue_t *queue_create();
+queue_t *queue_create(void);
 
 /* Adds an element at the end of the queue */
 void enqueue(void *elem, queue_t *queue);
@@ -23,7 +23,7 @@ void *dequeue(queue_t *queue);
 
 /* Removes all elements from the queue 
  * but doesn't affect the queue_t or the elements itself. */
-void queue_destroy_remove_elements(queue_t *queue);
+void queue_remove_elements(queue_t *queue);
 
 int queue_len(queue_t *queue);
 
