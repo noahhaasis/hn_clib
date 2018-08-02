@@ -4,7 +4,7 @@
 void trie_add(node_t* root, char* word) {
     if (!word || !*word) { root->is_word = true; }
     else {
-        int head_index = tolower(word[0]) - 97;
+        int head_index = tolower(word[0]) - 'a';
         if (!root->children[head_index]) {
             root->children[head_index] = calloc(1, sizeof(node_t));
         }
@@ -15,7 +15,7 @@ void trie_add(node_t* root, char* word) {
 void trie_remove(node_t *root, char *word) {
     if (!word || !*word) { root->is_word = false; }
     else {
-        int head_index = tolower(word[0]) - 97;
+        int head_index = tolower(word[0]) - 'a';
         node_t *child = root->children[head_index];
         if (!child) { return; }
 
@@ -31,7 +31,7 @@ void trie_remove(node_t *root, char *word) {
 
 bool trie_contains(node_t* root, char* word) {
     if (!word || !*word) { return root && root->is_word; }
-    int head_index = tolower(word[0]) - 97;
+    int head_index = tolower(word[0]) - 'a';
     return root && trie_contains(root->children[head_index], ++word);
 }
 
