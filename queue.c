@@ -42,6 +42,8 @@ void queue_remove_elements(queue_t *queue) {
         elem = next;
     }
     queue->length = 0;
+    queue->start = NULL;
+    queue->end = NULL;
 }
 
 int queue_len(queue_t *queue) {
