@@ -14,7 +14,9 @@ void enqueue(void *val, queue_t *queue) {
     queue_elem_t *new_elem = (queue_elem_t *)malloc(sizeof(queue_elem_t));
     new_elem->next = NULL;
     new_elem->data = val;
-    queue->end->next = new_elem;
+    if (queue->end) {
+        queue->end->next = new_elem;
+    }
     queue->end = new_elem;
     if (!queue->start) {
         queue->start = new_elem;
