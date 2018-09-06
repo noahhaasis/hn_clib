@@ -45,7 +45,8 @@ state_t *re_compile(char *pattern) {
                     current_state->transitions[i] = current_state;
                 }
             } else {
-                current_state->transitions[get_transition_index(pattern[i-1])] = current_state;
+                int index = get_transition_index(pattern[i-1]);
+                current_state->transitions[index] = current_state;
             }   
             break;
         case '|':
