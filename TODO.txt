@@ -9,4 +9,5 @@
 - quick sort
 - binary search tree's + balancing
 - string interning
+- bloom filters
 
