@@ -14,8 +14,8 @@ typedef struct {
 
 uint64_t fnv(char *s)
 {
-    const uint64_t  MAGIC_PRIME = 0x00000100000001b3;
-    uint64_t        hash       = 0xcbf29ce484222325;
+    const uint64_t  MAGIC_PRIME = 0x00000100000001B3;
+    uint64_t        hash        = 0xCBF29CE484222325;
  
     for (; s; s++)
         hash = (hash ^ *s) * MAGIC_PRIME;
@@ -54,14 +54,14 @@ bloom_filter_t *bloom_filter_create(int elem_count, float probability) {
 
 void bloom_filter_add(bloom_filter_t *filter, char *s) {
     for (int i = 1; i <= filter->hash_count; i++) {
-        filter->bit_array[hash(s, i)] = true;
+        filter->bit_array[hash(s, i, filter->arr_len)] = true;
     }
 }
 
 bool bloom_filter_test(bloom_filter_t *filter, char *s) {
     for (int i = 1; i <= filter->hash_count; i++) {
-        if (!filter->bit_array[hash(s, i)])
+        if (!filter->bit_array[hash(s, i, filter->arr_len)])
             return false;
     }
     return true;
-} 
+}
