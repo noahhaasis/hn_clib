@@ -46,8 +46,9 @@ void _optimize_filter_parameters(bloom_filter_t *filter, int n, float p) {
     // TODO
 }
 
-bloom_filter_t *bloom_filter_create(int elem_count, float probability) {
-    _optimize_filter_parameters(filter, elem_count, probability);
+bloom_filter_t *bloom_filter_create(int elem_count, 
+                                    float false_positive_probability) {
+    _optimize_filter_parameters(filter, elem_count, false_positive_probability);
     filter->bit_array = calloc(filter->arr_len, 1);
     return filter;
 }
