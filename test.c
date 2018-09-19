@@ -6,6 +6,7 @@
 #include "stack.h"
 #include "re.h"
 #include "queue.h"
+#include "bloom_filter.h"
 
 
 void test_trie_creation(void) {
@@ -240,6 +241,22 @@ void queue_test_all(void) {
     queue_test_remove_elements();
 }
 
+void bloom_filter_test_create(void) {
+    bloom_filter_t *filter = bloom_filter_create(10, 0.05);
+    assert(filter);
+    assert(filter->arr_len);
+    assert(filter->bit_array);
+    assert(filter->hash_count);
+}
+
+void bloom_filter_test_add(void) {
+}
+
+void bloom_filter_test_all(void) {
+    bloom_filter_test_create();
+    bloom_filter_test_add();
+}
+
 int main(void) {
     trie_test_all();
     printf("Tested the trie module successully!\n");
@@ -248,7 +265,9 @@ int main(void) {
     re_test_all();
     printf("Tested the regular expression module successfully!\n");
     queue_test_all();
-    printf("Tested the queue module successfully\n");
+    printf("Tested the queue module successfully!\n");
+    bloom_filter_test_all();
+    printf("Tested the bloom filter module successfully!\n");
     printf("All tests ran successfully!\n");
     return 0;
 }

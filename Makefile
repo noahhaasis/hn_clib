@@ -8,14 +8,14 @@ CFLAGS = -ggdb3 -std=c11 -Wall
 EXE = test
 
 # space-separated list of header files
-HDRS = array.h trie.h stack.h re.h queue.h
+HDRS = array.h trie.h stack.h re.h queue.h bloom_filter.h
 
 # space-separated list of libraries, if any,
 # each of which should be prefixed with -l
 LIBS =
 
 # space-separated list of source files
-SRCS = trie.c test.c stack.c re.c array.c queue.c
+SRCS = trie.c test.c stack.c re.c array.c queue.c bloom_filter.c
 
 # automatically generated list of object files
 OBJS = $(SRCS:.c=.o)
