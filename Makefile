@@ -23,7 +23,7 @@ OBJS = $(SRCS:.c=.o)
 
 # default target
 $(EXE): $(OBJS) $(HDRS) Makefile
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) -lm
 
 # dependencies
 $(OBJS): $(HDRS) Makefile
