@@ -4,7 +4,6 @@
  */
 #include "bloom_filter.h"
 
-#include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <math.h>
@@ -61,21 +60,21 @@ bloom_filter_t *bloom_filter_create(int elem_count,
     filter->bit_array = calloc(1, filter->arr_len);
     
     int bits_per_insertion = elem_count / num_of_bits;
-            int num_of_hashes = _optimal_num_of_hash_functions(elem_count, bits_per_insertion);
-            filter->hash_count = num_of_hashes;
-            return filter;
-        }
+    int num_of_hashes = _optimal_num_of_hash_functions(elem_count, bits_per_insertion);
+    filter->hash_count = num_of_hashes;
+    return filter;
+}
 
-        void bloom_filter_add(bloom_filter_t *filter, char *s) {
-            for (int i = 1; i <= filter->hash_count; i++) {
-                filter->bit_array[hash(s, i, filter->arr_len)] = true;
-            }
-        }
+void bloom_filter_add(bloom_filter_t *filter, char *s) {
+    for (int i = 1; i <= filter->hash_count; i++) {
+        filter->bit_array[hash(s, i, filter->arr_len)] = true;
+    }
+}
 
-        bool bloom_filter_might_contain(bloom_filter_t *filter, char *s) {
-            for (int i = 1; i <= filter->hash_count; i++) {
-                if (!filter->bit_array[hash(s, i, filter->arr_len)])
-                    return false;
-            }
-            return true;
-        }
+bool bloom_filter_might_contain(bloom_filter_t *filter, char *s) {
+    for (int i = 1; i <= filter->hash_count; i++) {
+        if (!filter->bit_array[hash(s, i, filter->arr_len)])
+            return false;
+    }
+    return true;
+}
