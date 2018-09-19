@@ -1,7 +1,3 @@
-/*
- * TODO:
- * - The hash functions could be extracted into a different module.
- */
 #include "bloom_filter.h"
 
 #include <stdint.h>
