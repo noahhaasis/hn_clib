@@ -252,8 +252,8 @@ void bloom_filter_test_create(void) {
 void bloom_filter_test_add(void) {
     bloom_filter_t *filter = bloom_filter_create(10, 0.05);
     char *elems[10] = {
-        "hello", "soosososo", "2", 
-        "3", "d", "234nkjk-?", "7", 
+        "hello", "soosososo", "2",
+        "3", "d", "234nkjk-?", "7",
         "222", "nice", "10"};
 
     for (int i = 0; i < 10; i++) {
