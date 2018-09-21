@@ -247,6 +247,7 @@ void bloom_filter_test_create(void) {
     assert(filter->arr_len);
     assert(filter->bit_array);
     assert(filter->hash_count);
+    bloom_filter_destroy(filter);
 }
 
 void bloom_filter_test_add(void) {
@@ -263,6 +264,7 @@ void bloom_filter_test_add(void) {
 
     // NOTE: There is a small probability that this fails
     assert(!bloom_filter_might_contain(filter, "222341"));
+    bloom_filter_destroy(filter);
 }
 
 void bloom_filter_test_add_empty_string(void) {
@@ -271,6 +273,7 @@ void bloom_filter_test_add_empty_string(void) {
 
     assert(bloom_filter_might_contain(filter, ""));
     assert(!bloom_filter_might_contain(filter, "1"));
+    bloom_filter_destroy(filter);
 }
 
 void bloom_filter_test_all(void) {

@@ -74,3 +74,8 @@ bool bloom_filter_might_contain(bloom_filter_t *filter, char *s) {
     }
     return true;
 }
+
+void bloom_filter_destroy(bloom_filter_t *filter) {
+    free(filter->bit_array);
+    free(filter);
+}
