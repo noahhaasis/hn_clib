@@ -260,15 +260,24 @@ void bloom_filter_test_add(void) {
         bloom_filter_add(filter, elems[i]);
         assert(bloom_filter_might_contain(filter, elems[i]));
     }
+
+    // NOTE: There is a small probability that this fails
+    assert(!bloom_filter_might_contain(filter, "222341"));
 }
 
 void bloom_filter_test_add_empty_string(void) {
+    bloom_filter_t *filter = bloom_filter_create(7, 0.1);
+    bloom_filter_add(filter, "");
 
+    assert(bloom_filter_might_contain(filter, ""));
+    assert(!bloom_filter_might_contain(filter, "1"));
 }
 
 void bloom_filter_test_all(void) {
+    // TODO: Add tests for the false positive probability
     bloom_filter_test_create();
     bloom_filter_test_add();
+    bloom_filter_test_add_empty_string();
 }
 
 int main(void) {
