@@ -12,7 +12,7 @@ HDRS = array.h trie.h stack.h re.h queue.h bloom_filter.h
 
 # space-separated list of libraries, if any,
 # each of which should be prefixed with -l
-LIBS =
+LIBS = -lm
 
 # space-separated list of source files
 SRCS = trie.c test.c stack.c re.c array.c queue.c bloom_filter.c
@@ -23,7 +23,7 @@ OBJS = $(SRCS:.c=.o)
 
 # default target
 $(EXE): $(OBJS) $(HDRS) Makefile
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) -lm
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
 
 # dependencies
 $(OBJS): $(HDRS) Makefile
